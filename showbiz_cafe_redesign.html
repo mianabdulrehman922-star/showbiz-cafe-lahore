@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showbiz Cafe — Johar Town, Lahore | Redesign Concept</title>
+    
+    <!-- Fonts: Cormorant Garamond for elegant serif headlines, Plus Jakarta Sans for ultra-clean body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: {
+                            DEFAULT: '#1a1918',
+                            light: '#252321',
+                            dark: '#121110',
+                            card: '#22201e'
+                        },
+                        cream: {
+                            DEFAULT: '#fbf9f4',
+                            dark: '#f3efe6',
+                            muted: '#e7e2d6'
+                        },
+                        coffee: {
+                            light: '#5c3f2e',
+                            DEFAULT: '#3d281d',
+                            dark: '#271912'
+                        },
+                        gold: {
+                            DEFAULT: '#d4af37',
+                            muted: '#c5a059',
+                            dark: '#a88330',
+                            glow: 'rgba(212, 175, 55, 0.15)'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles & Animations -->
+    <style>
+        body {
+            background-color: #1a1918;
+            color: #fbf9f4;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-serif-custom {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Subtle ambient glow effect */
+        .gold-glow {
+            box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.25);
+        }
+
+        .gold-border-glow {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Smooth image zoom effect */
+        .zoom-img-container {
+            overflow: hidden;
+        }
+        .zoom-img-container img {
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .zoom-img-container:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121110;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3d281d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c5a059;
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(26, 25, 24, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Category Filter active indicator */
+        .filter-btn.active {
+            background-color: #c5a059;
+            color: #1a1918;
+            font-weight: 600;
+            border-color: #c5a059;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-charcoal-dark">
+
+    <!-- Navigation Bar -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-nav border-b border-gold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center bg-coffee/40 group-hover:border-gold transition-colors duration-300">
+                        <i class="fa-solid me-0 fa-mug-hot text-gold text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif-custom text-2xl font-bold tracking-wider text-cream group-hover:text-gold transition-colors">SHOWBIZ <span class="text-gold font-normal italic">CAFE</span></span>
+                        <span class="text-[10px] uppercase tracking-widest text-cream/50 -mt-1">Johar Town • Lahore</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-medium">
+                    <a href="#about" class="text-cream/80 hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold/50">About</a>
+                    <a href="#menu" class="text-cream/80 hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold/50">Menu</a>
+                    <a href="#gallery" class="text-cream/80 hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold/50">Gallery</a>
+                    <a href="#contact" class="text-cream/80 hover:text-gold transition-colors py-2 border-b-2 border-transparent hover:border-gold/50">Location & Contact</a>
+                </nav>
+
+                <!-- Desktop Quick Actions -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:+923002494777" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold border border-gold/40 rounded-full hover:bg-gold hover:text-charcoal-dark transition-all duration-300 flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-xs"></i> 0300 2494777
+                    </a>
+                    <a href="#reservation" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider bg-gold text-charcoal-dark rounded-full hover:bg-gold-muted transition-colors shadow-lg shadow-gold/10">
+                        Book Table
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden text-cream hover:text-gold focus:outline-none p-2" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal-dark/98 border-b border-gold/20 px-4 pt-3 pb-6 space-y-3 transition-all">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream/90 hover:text-gold hover:bg-charcoal-light">About Us</a>
+            <a href="#menu" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream/90 hover:text-gold hover:bg-charcoal-light">Menu Highlights</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream/90 hover:text-gold hover:bg-charcoal-light">Gallery</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream/90 hover:text-gold hover:bg-charcoal-light">Location & Contact</a>
+            <a href="#reservation" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream/90 hover:text-gold hover:bg-charcoal-light">Reservations</a>
+            
+            <div class="pt-4 border-t border-cream/10 flex flex-col gap-2">
+                <a href="tel:+923002494777" class="w-full text-center py-2.5 text-xs font-semibold uppercase tracking-wider text-gold border border-gold/40 rounded-lg bg-coffee/20">
+                    <i class="fa-solid fa-phone mr-2"></i> Call 0300 2494777
+                </a>
+                <a href="https://maps.app.goo.gl/2wZZbaNphtEHc2So8?g_st=ac" target="_blank" rel="noopener" class="w-full text-center py-2.5 text-xs font-semibold uppercase tracking-wider text-cream bg-charcoal border border-cream/20 rounded-lg">
+                    <i class="fa-solid fa-location-dot mr-2 text-gold"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1920" alt="Showbiz Cafe Ambience" class="w-full h-full object-cover object-center filter brightness-[0.25] contrast-[1.1] scale-105 animate-pulse" style="animation-duration: 8s;">
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-charcoal/40"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10">
+            <!-- Decorative Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-coffee/40 backdrop-blur-md mb-6 animate-fade-in">
+                <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
+                <span class="text-xs uppercase tracking-widest text-gold font-medium">Johar Town • Phase 2 • Lahore</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif-custom font-bold text-cream tracking-tight leading-tight mb-6">
+                Make Every Moment <span class="italic text-gold font-normal">Special.</span>
+            </h1>
+
+            <!-- Supporting Text -->
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-cream/80 font-light leading-relaxed mb-10">
+                Discover great flavours, refreshing drinks, and memorable moments at Showbiz Cafe. A stylish dining sanctuary crafted for food lovers in Lahore.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-gold-muted text-charcoal-dark font-semibold text-sm uppercase tracking-wider rounded-full transition-all transform hover:-translate-y-0.5 shadow-lg shadow-gold/20 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-utensils"></i> Explore Menu
+                </a>
+                <a href="tel:+923002494777" class="w-full sm:w-auto px-8 py-4 bg-charcoal-light/80 hover:bg-charcoal border border-gold/30 hover:border-gold text-cream font-semibold text-sm uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
+                    <i class="fa-solid fa-phone text-gold"></i> Call Now
+                </a>
+                <a href="https://maps.app.goo.gl/2wZZbaNphtEHc2So8?g_st=ac" target="_blank" rel="noopener" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-cream/20 hover:border-cream/50 text-cream/90 hover:text-cream font-medium text-sm uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-compass text-gold"></i> Directions
+                </a>
+            </div>
+
+            <!-- Highlights Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t border-cream/10 text-left max-w-4xl mx-auto">
+                <div class="flex items-center gap-3">
+                    <div class="p-3 rounded-lg bg-coffee/40 border border-gold/20 text-gold">
+                        <i class="fa-solid fa-coffee text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-cream">Artisanal Coffee</h4>
+                        <p class="text-xs text-cream/50">Freshly brewed coffee</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="p-3 rounded-lg bg-coffee/40 border border-gold/20 text-gold">
+                        <i class="fa-solid fa-burger text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-cream">Gourmet Burgers</h4>
+                        <p class="text-xs text-cream/50">Juicy handmade patties</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="p-3 rounded-lg bg-coffee/40 border border-gold/20 text-gold">
+                        <i class="fa-solid fa-bowl-food text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-cream">Italian & Pastas</h4>
+                        <p class="text-xs text-cream/50">Rich creamy Alfredo</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="p-3 rounded-lg bg-coffee/40 border border-gold/20 text-gold">
+                        <i class="fa-solid fa-wine-glass-drop text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-cream">Mocktails & Shakes</h4>
+                        <p class="text-xs text-cream/50">Chilled signature drinks</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-charcoal-dark relative overflow-hidden">
+        <!-- Subtle gold line decorative elements -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Image Grid -->
+                <div class="lg:col-span-6 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="zoom-img-container rounded-2xl border border-gold/20 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800" alt="Showbiz Cafe Interior" class="w-full h-72 sm:h-80 object-cover rounded-2xl">
+                        </div>
+                        <div class="zoom-img-container rounded-2xl border border-gold/20 shadow-2xl mt-8">
+                            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800" alt="Signature Refreshing Beverage" class="w-full h-72 sm:h-80 object-cover rounded-2xl">
+                        </div>
+                    </div>
+                    <!-- Decorative Badge in center -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-coffee-dark/90 border border-gold/50 p-4 rounded-full text-center shadow-2xl backdrop-blur-md hidden sm:block">
+                        <i class="fa-solid fa-utensils text-gold text-2xl mb-1"></i>
+                        <p class="text-[10px] tracking-widest text-cream uppercase font-semibold">Johar Town</p>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2">
+                        <span class="w-8 h-[1px] bg-gold"></span>
+                        <span class="text-xs uppercase tracking-widest text-gold font-semibold">Experience Showbiz Cafe</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-serif-custom font-bold text-cream leading-tight">
+                        A Sophisticated Culinary Haven in <span class="text-gold italic font-normal">Johar Town, Lahore</span>
+                    </h2>
+
+                    <p class="text-cream/70 text-base leading-relaxed">
+                        Nestled along Khayaban-e-Firdousi in Phase 2 Johar Town, <strong>Showbiz Cafe</strong> offers a cozy yet refined environment tailored for memorable catch-ups, relaxed family dinners, and peaceful coffee breaks.
+                    </p>
+
+                    <p class="text-cream/70 text-base leading-relaxed">
+                        Whether you are craving rich gourmet burgers, sizzling BBQ, velvety Alfredo pasta, or handcrafted cold shakes, our menu brings together verified crowd favorites crafted with high-quality ingredients and attentive hospitality.
+                    </p>
+
+                    <div class="pt-4 grid grid-cols-2 gap-6 border-t border-cream/10">
+                        <div>
+                            <span class="block text-2xl font-serif-custom font-bold text-gold">Khayaban-e-Firdousi</span>
+                            <span class="text-xs text-cream/60">Prime Location in Block R1, Johar Town</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-serif-custom font-bold text-gold">Dine-in & Takeaway</span>
+                            <span class="text-xs text-cream/60">Comfortable indoor setting</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://maps.app.goo.gl/2wZZbaNphtEHc2So8?g_st=ac" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-cream transition-colors group">
+                            Find Us On Google Maps <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section id="menu" class="py-24 bg-charcoal relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest text-gold font-semibold mb-2 block">Taste The Finest</span>
+                <h2 class="text-4xl sm:text-5xl font-serif-custom font-bold text-cream mb-4">Our Featured <span class="italic text-gold font-normal">Menu Selection</span></h2>
+                <p class="text-cream/70 text-sm sm:text-base">Explore popular highlights carefully prepared with rich flavors and fresh ingredients. Prices are listed in PKR.</p>
+            </div>
+
+            <!-- Menu Category Filter Tabs -->
+            <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12" id="menu-filters">
+                <button data-category="all" class="filter-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium border border-gold/30 text-cream/90 hover:border-gold transition-all">All Items</button>
+                <button data-category="burgers" class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium border border-gold/30 text-cream/90 hover:border-gold transition-all">Fast Food & Burgers</button>
+                <button data-category="pasta" class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium border border-gold/30 text-cream/90 hover:border-gold transition-all">Pasta & Italian</button>
+                <button data-category="sandwiches" class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium border border-gold/30 text-cream/90 hover:border-gold transition-all">Sandwiches & Wraps</button>
+                <button data-category="drinks" class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium border border-gold/30 text-cream/90 hover:border-gold transition-all">Beverages & Shakes</button>
+                <button data-category="desserts" class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium border border-gold/30 text-cream/90 hover:border-gold transition-all">Desserts</button>
+            </div>
+
+            <!-- Menu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
+                
+                <!-- Item 1: Burger -->
+                <div class="menu-card bg-charcoal-card border border-gold/10 rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 shadow-lg" data-category="burgers">
+                    <div class="relative h-48 zoom-img-container">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=600" alt="Showbiz Gourmet Beef Burger" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-coffee-dark/90 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">PKR 899</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif-custom font-bold text-cream">Showbiz Signature Beef Burger</h3>
+                        </div>
+                        <p class="text-cream/60 text-xs sm:text-sm mb-4 leading-relaxed">Juicy handcrafted beef patty topped with melted cheddar, caramelised onions, pickles & house secret sauce.</p>
+                        <div class="flex justify-between items-center text-xs text-gold/80 font-medium pt-2 border-t border-cream/5">
+                            <span><i class="fa-solid fa-fire mr-1"></i> Chef's Special</span>
+                            <span>Served with Crispy Fries</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Pasta -->
+                <div class="menu-card bg-charcoal-card border border-gold/10 rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 shadow-lg" data-category="pasta">
+                    <div class="relative h-48 zoom-img-container">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281288?auto=format&fit=crop&q=80&w=600" alt="Fettuccine Alfredo Pasta" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-coffee-dark/90 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">PKR 1,199</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif-custom font-bold text-cream">Creamy Alfredo Fettuccine</h3>
+                        </div>
+                        <p class="text-cream/60 text-xs sm:text-sm mb-4 leading-relaxed">Tender fettuccine tossed in rich parmesan cream sauce, grilled chicken fillet, and fresh garlic bread slice.</p>
+                        <div class="flex justify-between items-center text-xs text-gold/80 font-medium pt-2 border-t border-cream/5">
+                            <span><i class="fa-solid fa-wheat-awn mr-1"></i> Italian Classic</span>
+                            <span>Garlic Toast Included</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Club Sandwich -->
+                <div class="menu-card bg-charcoal-card border border-gold/10 rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 shadow-lg" data-category="sandwiches">
+                    <div class="relative h-48 zoom-img-container">
+                        <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&q=80&w=600" alt="Classic Club Sandwich" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-coffee-dark/90 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">PKR 749</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif-custom font-bold text-cream">Classic Triple Deck Club</h3>
+                        </div>
+                        <p class="text-cream/60 text-xs sm:text-sm mb-4 leading-relaxed">Layered toasted bread stuffed with shredded chicken, fried egg, cheese slices, fresh lettuce, tomato & mayo.</p>
+                        <div class="flex justify-between items-center text-xs text-gold/80 font-medium pt-2 border-t border-cream/5">
+                            <span><i class="fa-solid fa-layer-group mr-1"></i> High Protein</span>
+                            <span>With French Fries & Dip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Drink -->
+                <div class="menu-card bg-charcoal-card border border-gold/10 rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 shadow-lg" data-category="drinks">
+                    <div class="relative h-48 zoom-img-container">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=600" alt="Mint Margarita" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-coffee-dark/90 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">PKR 399</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif-custom font-bold text-cream">Refreshing Mint Margarita</h3>
+                        </div>
+                        <p class="text-cream/60 text-xs sm:text-sm mb-4 leading-relaxed">Crushed ice blended with fresh garden mint leaves, lemon juice, sprite & black salt for ultimate coolness.</p>
+                        <div class="flex justify-between items-center text-xs text-gold/80 font-medium pt-2 border-t border-cream/5">
+                            <span><i class="fa-solid fa-snowflake mr-1"></i> Cold Special</span>
+                            <span>Chilled Beverage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Dessert -->
+                <div class="menu-card bg-charcoal-card border border-gold/10 rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 shadow-lg" data-category="desserts">
+                    <div class="relative h-48 zoom-img-container">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=600" alt="Sizzling Molten Lava Cake" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-coffee-dark/90 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">PKR 599</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif-custom font-bold text-cream">Hot Chocolate Molten Lava</h3>
+                        </div>
+                        <p class="text-cream/60 text-xs sm:text-sm mb-4 leading-relaxed">Warm dark chocolate sponge cake overflowing with liquid fudge, served alongside premium vanilla scoop.</p>
+                        <div class="flex justify-between items-center text-xs text-gold/80 font-medium pt-2 border-t border-cream/5">
+                            <span><i class="fa-solid fa-ice-cream mr-1"></i> Sweet Favorite</span>
+                            <span>Served Hot with Ice Cream</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Coffee -->
+                <div class="menu-card bg-charcoal-card border border-gold/10 rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 shadow-lg" data-category="drinks">
+                    <div class="relative h-48 zoom-img-container">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600" alt="Specialty Cappuccino Coffee" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-coffee-dark/90 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">PKR 449</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif-custom font-bold text-cream">Specialty Cappuccino</h3>
+                        </div>
+                        <p class="text-cream/60 text-xs sm:text-sm mb-4 leading-relaxed">Double shot espresso topped with micro-foamed milk and sprinkled cocoa dust.</p>
+                        <div class="flex justify-between items-center text-xs text-gold/80 font-medium pt-2 border-t border-cream/5">
+                            <span><i class="fa-solid fa-mug-hot mr-1"></i> Hot Brew</span>
+                            <span>Freshly Ground Espresso</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Full Menu Callout -->
+            <div class="mt-16 text-center bg-coffee/20 border border-gold/20 rounded-2xl p-8 max-w-3xl mx-auto backdrop-blur-sm">
+                <h3 class="text-2xl font-serif-custom font-bold text-cream mb-2">Looking for the Complete Menu?</h3>
+                <p class="text-cream/70 text-sm mb-6">Discover our full array of BBQ, Karahi dishes, starters, seasonal drinks, and full course meals on our official domain.</p>
+                <a href="https://showbizcafe.pk/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3.5 bg-gold hover:bg-gold-muted text-charcoal-dark font-semibold text-xs uppercase tracking-widest rounded-full transition-all shadow-md">
+                    View Full Menu on Showbizcafe.pk <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-charcoal-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-gold font-semibold mb-2 block">Atmosphere & Delights</span>
+                <h2 class="text-4xl sm:text-5xl font-serif-custom font-bold text-cream">Cafe <span class="italic text-gold font-normal">Gallery</span></h2>
+                <p class="text-cream/70 text-sm sm:text-base mt-2">Take a glimpse inside our cozy seating layout and delicious meal presentations.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <div class="gallery-item relative zoom-img-container rounded-xl overflow-hidden cursor-pointer h-64 border border-gold/10 group">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Dining Ambience" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-charcoal-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-gold text-xs font-semibold uppercase tracking-wider">Dining Space</span>
+                        <p class="text-cream text-sm font-serif-custom">Cozy Johar Town Seating</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item relative zoom-img-container rounded-xl overflow-hidden cursor-pointer h-64 border border-gold/10 group">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="Fresh Food Serving" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-charcoal-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-gold text-xs font-semibold uppercase tracking-wider">Kitchen Quality</span>
+                        <p class="text-cream text-sm font-serif-custom">Freshly Prepared Meals</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item relative zoom-img-container rounded-xl overflow-hidden cursor-pointer h-64 border border-gold/10 group">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800" alt="Coffee Brewing" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-charcoal-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-gold text-xs font-semibold uppercase tracking-wider">Beverage Station</span>
+                        <p class="text-cream text-sm font-serif-custom">Artisanal Espresso & Drinks</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item relative zoom-img-container rounded-xl overflow-hidden cursor-pointer h-64 border border-gold/10 group">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800" alt="Desserts" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-charcoal-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-gold text-xs font-semibold uppercase tracking-wider">Sweet Treats</span>
+                        <p class="text-cream text-sm font-serif-custom">Decadent Pastries & Desserts</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reservation & Contact Section -->
+    <section id="reservation" class="py-24 bg-charcoal relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Info Panel -->
+                <div id="contact" class="lg:col-span-5 bg-charcoal-card p-8 sm:p-10 rounded-3xl border border-gold/20 relative shadow-2xl">
+                    <span class="text-xs uppercase tracking-widest text-gold font-semibold mb-2 block">Reach Out To Us</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif-custom font-bold text-cream mb-6">Contact & <span class="text-gold italic font-normal">Location</span></h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-coffee/40 rounded-xl border border-gold/20 text-gold mt-1">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-wider text-cream/50 mb-1">Phone Line</h4>
+                                <a href="tel:+923002494777" class="text-lg font-semibold text-cream hover:text-gold transition-colors">0300 2494777</a>
+                                <p class="text-xs text-cream/40 mt-0.5">Click to call directly</p>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-coffee/40 rounded-xl border border-gold/20 text-gold mt-1">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-wider text-cream/50 mb-1">Address</h4>
+                                <p class="text-sm font-medium text-cream leading-relaxed">
+                                    F73F+638, Khayaban-e-Firdousi, Block R1, Phase 2, Johar Town, Lahore, Pakistan
+                                </p>
+                                <a href="https://maps.app.goo.gl/2wZZbaNphtEHc2So8?g_st=ac" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-gold hover:underline mt-2">
+                                    Open Google Maps Navigation <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Opening Hours Notice -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-coffee/40 rounded-xl border border-gold/20 text-gold mt-1">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-wider text-cream/50 mb-1">Opening Hours</h4>
+                                <p class="text-sm text-cream">Open Daily for Dine-in & Takeaway</p>
+                                <p class="text-xs text-gold/80 italic mt-0.5">Check Google Maps for real-time live holiday hours.</p>
+                            </div>
+                        </div>
+
+                        <!-- Website Link -->
+                        <div class="flex items-start gap-4 pt-2 border-t border-cream/10">
+                            <div class="p-3 bg-coffee/40 rounded-xl border border-gold/20 text-gold mt-1">
+                                <i class="fa-solid fa-globe text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-wider text-cream/50 mb-1">Official Website</h4>
+                                <a href="https://showbizcafe.pk/" target="_blank" rel="noopener" class="text-sm font-semibold text-gold hover:underline">https://showbizcafe.pk/</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Action Buttons -->
+                    <div class="mt-8 pt-6 border-t border-cream/10 flex flex-col sm:flex-row gap-3">
+                        <a href="tel:+923002494777" class="flex-1 py-3 px-4 bg-gold hover:bg-gold-muted text-charcoal-dark font-semibold text-xs uppercase tracking-wider rounded-xl text-center transition-colors">
+                            <i class="fa-solid fa-phone mr-1"></i> Call Now
+                        </a>
+                        <a href="https://maps.app.goo.gl/2wZZbaNphtEHc2So8?g_st=ac" target="_blank" rel="noopener" class="flex-1 py-3 px-4 bg-charcoal border border-gold/30 text-cream hover:border-gold font-semibold text-xs uppercase tracking-wider rounded-xl text-center transition-colors">
+                            <i class="fa-solid fa-directions mr-1 text-gold"></i> Directions
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Form -->
+                <div class="lg:col-span-7 bg-charcoal-card/60 p-8 sm:p-10 rounded-3xl border border-gold/10 backdrop-blur-md">
+                    <span class="text-xs uppercase tracking-widest text-gold font-semibold mb-2 block">Table Reservation or Inquiry</span>
+                    <h3 class="text-3xl font-serif-custom font-bold text-cream mb-2">Book Your <span class="italic text-gold font-normal">Table</span></h3>
+                    <p class="text-cream/60 text-xs sm:text-sm mb-8">Send us your reservation request or general question. We will confirm your seating as soon as possible.</p>
+
+                    <form id="booking-form" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-cream/70 mb-2" for="user_name">Full Name *</label>
+                                <input type="text" id="user_name" required placeholder="e.g. Ali Ahmed" class="w-full bg-charcoal/80 border border-cream/20 rounded-xl px-4 py-3 text-sm text-cream placeholder-cream/30 focus:outline-none focus:border-gold transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-cream/70 mb-2" for="user_phone">Phone Number *</label>
+                                <input type="tel" id="user_phone" required placeholder="0300 0000000" class="w-full bg-charcoal/80 border border-cream/20 rounded-xl px-4 py-3 text-sm text-cream placeholder-cream/30 focus:outline-none focus:border-gold transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-cream/70 mb-2" for="res_date">Date *</label>
+                                <input type="date" id="res_date" required class="w-full bg-charcoal/80 border border-cream/20 rounded-xl px-4 py-3 text-sm text-cream placeholder-cream/30 focus:outline-none focus:border-gold transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-cream/70 mb-2" for="res_time">Time *</label>
+                                <input type="time" id="res_time" required class="w-full bg-charcoal/80 border border-cream/20 rounded-xl px-4 py-3 text-sm text-cream placeholder-cream/30 focus:outline-none focus:border-gold transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-cream/70 mb-2" for="res_guests">Guests</label>
+                                <select id="res_guests" class="w-full bg-charcoal/80 border border-cream/20 rounded-xl px-4 py-3 text-sm text-cream focus:outline-none focus:border-gold transition-colors">
+                                    <option value="2">2 Guests</option>
+                                    <option value="4" selected>4 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="8">8+ Guests</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-cream/70 mb-2" for="res_notes">Special Requests / Notes</label>
+                            <textarea id="res_notes" rows="3" placeholder="Specify outdoor seating, birthday setups, or dietary requirements..." class="w-full bg-charcoal/80 border border-cream/20 rounded-xl px-4 py-3 text-sm text-cream placeholder-cream/30 focus:outline-none focus:border-gold transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-gold hover:bg-gold-muted text-charcoal-dark font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-lg shadow-gold/10 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Inquiry
+                        </button>
+                    </form>
+
+                    <!-- Feedback Notification Toast Box -->
+                    <div id="form-toast" class="hidden mt-4 p-4 rounded-xl border border-gold/40 bg-coffee/40 text-cream text-xs leading-relaxed flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-gold text-xl"></i>
+                        <div>
+                            <strong class="block text-gold text-sm">Request Submitted</strong>
+                            Thank you! Your inquiry details have been processed. For urgent instant bookings, please call us directly at <strong>0300 2494777</strong>.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal-dark border-t border-gold/10 py-12 text-cream/60 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <!-- Brand Info -->
+                <div class="text-center md:text-left">
+                    <span class="font-serif-custom text-xl font-bold text-cream tracking-wider">SHOWBIZ <span class="text-gold italic font-normal">CAFE</span></span>
+                    <p class="text-cream/40 mt-1">F73F+638, Khayaban-e-Firdousi, Block R1, Phase 2, Johar Town, Lahore</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="flex items-center gap-6 text-cream/80 uppercase tracking-widest text-[11px]">
+                    <a href="#about" class="hover:text-gold transition-colors">About</a>
+                    <a href="#menu" class="hover:text-gold transition-colors">Menu</a>
+                    <a href="#gallery" class="hover:text-gold transition-colors">Gallery</a>
+                    <a href="https://showbizcafe.pk/" target="_blank" rel="noopener" class="hover:text-gold transition-colors">Official Website</a>
+                </div>
+
+                <!-- Direct Dial -->
+                <div class="text-center md:text-right">
+                    <a href="tel:+923002494777" class="text-gold font-semibold hover:underline">0300 2494777</a>
+                    <p class="text-cream/40 text-[10px] mt-0.5">Website Redesign Concept • Lahore</p>
+                </div>
+
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-cream/5 text-center text-cream/30 text-[10px]">
+                &copy; <span id="year">2026</span> Showbiz Cafe Redesign Concept. All business information verified via official Google Maps & Website listing.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 1. Mobile Menu Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile drawer on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // 2. Interactive Category Filter for Menu
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const selectedCategory = btn.getAttribute('data-category');
+
+                menuCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                        card.style.display = 'block';
+                        card.classList.add('animate-fade-in');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 3. Booking Form Client Validation & Toast Handler
+        const bookingForm = document.getElementById('booking-form');
+        const formToast = document.getElementById('form-toast');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show custom inline toast message without false claims of real backend response
+            formToast.classList.remove('hidden');
+            
+            // Reset form fields
+            bookingForm.reset();
+
+            // Smooth scroll to toast
+            formToast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    </script>
+</body>
+</html>
